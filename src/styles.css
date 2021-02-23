@@ -149,11 +149,19 @@ hr {
 
 footer {
   margin: 0px 0 15px 0;
+
 }
 
-footer a {
-  text-decoration: none;
+.copyright {
   color: #7bcdf9;
   font-family: "Courier New", Courier, monospace;
   text-shadow: 2px 2px 2px rgba(31, 52, 63, 0.75);
 }
+
+.fa-github-square,
+.fa-linkedin {
+  text-decoration: none;
+  color: white;
+  padding: 0 2px;
+}
+ 
