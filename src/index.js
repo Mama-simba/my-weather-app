@@ -1,15 +1,24 @@
 // ADD CURRENT DATE
 
-let now = new Date();
+function formatDate (timestamp){  //date in milliseconds
+  let now = new Date (timestamp)
+  let minutes = now.getMinutes();  //shows minutes with 2 digits
+    if (minutes < 10){
+      minutes = `0${minutes}`;
+    }
 
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
+  let hours = now.getHours();  //shows hours with 2 digits
+    if (hours < 10){
+      hours = `0${hours}`;
+    }
 
-let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let weekDay = weekDays[now.getDay()];
+  
+  let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let weekDay = weekDays[now.getDay()];
 
-let months = [
+  let dayNumber = now.getDate();
+
+  let months = [
   "January",
   "February",
   "March",
@@ -22,11 +31,16 @@ let months = [
   "October",
   "November",
   "December"
-];
+  ];
 let month = months[now.getMonth()];
 
-let currentDate = document.querySelector("#date");
-currentDate.innerHTML = `${weekDay}, ${date} ${month}, ${hours}:${minutes}`;
+  return `${weekDay}, ${dayNumber} ${month}, ${hours}:${minutes}`;
+}
+
+let dateElement = document.querySelector ("#date");
+dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+
 
 //SHOW DEFAULT CITY
 
@@ -69,7 +83,7 @@ function displayWeather(response) {
   windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
 
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity} %`;
+  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
   let pressureElement = document.querySelector("#pressure");
   pressureElement.innerHTML = `Pressure: ${response.data.main.pressure} hPa`;
