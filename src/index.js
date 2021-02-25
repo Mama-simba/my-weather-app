@@ -1,7 +1,7 @@
 // ADD CURRENT DATE
 
 function formatDate (timestamp){  //date in milliseconds
-  let now = new Date (timestamp)
+  let now = new Date(timestamp);
   let minutes = now.getMinutes();  //shows minutes with 2 digits
     if (minutes < 10){
       minutes = `0${minutes}`;
@@ -37,8 +37,7 @@ let month = months[now.getMonth()];
   return `${weekDay}, ${dayNumber} ${month}, ${hours}:${minutes}`;
 }
 
-let dateElement = document.querySelector ("#date");
-dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
 
 
 
@@ -62,6 +61,10 @@ form.addEventListener("submit", handleSubmit);
 
 //CHANGE WEATHER
 function displayWeather(response) {
+
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
 
