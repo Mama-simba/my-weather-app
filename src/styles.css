@@ -1,9 +1,6 @@
 body {
   font-family: "Comfortaa", cursive, sans-serif;
-  background-image: url(https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background: whitesmoke;
 }
 
 .weather-app {
@@ -12,7 +9,10 @@ body {
   padding: 5px 30px;
   border-radius: 10px;
   box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
-  background: hsla(0, 0%, 100%, 0.9);
+  background-image: url(https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 /* SEARCH BAR */
@@ -74,8 +74,8 @@ input {
 }
 
 .icon-today-weather {
-  width: 50px;
-  margin: 15px 10px;
+  width: 60px;
+  margin: 10px 10px;
 }
 
 .temperature {
@@ -88,6 +88,7 @@ input {
   bottom: 25px;
   left: -3px;
   text-decoration: none;
+  color: #7bcdf9;
 }
 
 .line {
@@ -102,6 +103,7 @@ input {
 .unit-type:hover {
   cursor: pointer;
   font-weight: bold;
+  
 }
 
 .max-min-temp {
@@ -114,7 +116,7 @@ input {
 }
 
 .fa-thermometer-quarter {
-  color: #0a59ca;
+  color: #7bcdf9;
   font-size: 15px;
 }
 
@@ -126,18 +128,17 @@ ul {
 /* FORECAST PER HOUR */
 
 hr {
-  background: #333;
-  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  background: white;
+  background-image: linear-gradient(to right, #ccc, white, #ccc);
 }
 
-
 .hour-box {
-  padding: 5px 20px;
+  padding: 5px 25px;
 
 }
 
 .hour-weather-icon {
-  width: 35px;
+  width: 40px;
   display: block;
   margin: 0 auto;
   padding-bottom: 5px;
@@ -149,21 +150,25 @@ hr {
   width: 25px;
 }
 
+
+
+/*FOOTER*/
+
 footer {
   margin: 0px 0 15px 0;
 
 }
 
 .copyright {
-  color: #7bcdf9;
+  color: black;
   font-family: "Courier New", Courier, monospace;
-  text-shadow: 2px 2px 2px rgba(31, 52, 63, 0.75);
+  text-shadow: 2px 2px 2px rgba(31, 52, 63, 0.5);
 }
 
 .fa-github-square,
 .fa-linkedin {
   text-decoration: none;
-  color: white;
+  color: black;
   padding: 0 2px;
 }
  

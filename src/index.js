@@ -60,8 +60,9 @@ function search(city) {
   axios.get(apiUrl).then(displayWeather);
 
   //Hourly forecast API
-  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+  
 }
 
 
@@ -86,13 +87,13 @@ function displayForecast(response){
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
     <div class="hour-box">
-      <h4 class="text-center">
+      <p class="text-center text-light">
       ${formatHours(forecast.dt * 1000)} 
-      </h4>
+      </p>
       <img class="hour-weather-icon" src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" />
-      <h4 class="text-center">
+      <p class="text-center text-light">
       ${Math.round(forecast.main.temp)}°
-      </h4>
+      </p>
     </div>
     `; 
   }
@@ -123,12 +124,10 @@ function displayWeather(response) {
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
 
   //Display Celsius temperature per city
-
   celsiusTemperature = response.data.main.temp;
 
 
   //Weather details
-
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
 

@@ -38,34 +38,34 @@
 
                 <!--TODAY'S WEATHER-->
                 <div class="row">
-                    <h1 class="city text-secondary text-center text-dark">Berlin</h1>
-                    <p class="text-secondary text-center mb-0" id="date">
+                    <h1 class="city text-secondary text-center text-light">Berlin</h1>
+                    <p class="text-light text-center mb-0" id="date">
                         Wed, 17 February, 15:30
                     </p>
 
                     <div class="main-weather d-flex justify-content-center">
                         <div class="left-box text-center">
                             <img class="icon-today-weather" id="main-icon" src="images/snowflake.png" alt="Current weather icon" />
-                            <p id="weather-description">Snow</p>
+                            <p id="weather-description" class="text-light">Snow</p>
                         </div>
                         <div class="right-box text-center">
-                            <span class="temperature text-dark" id="temp">8</span>
+                            <span class="temperature text-light" id="temp">8</span>
                             <a href="#" class="unit-type" id="celsius">°C</a>
-                            <a class="line">|</a>
+                            <a class="line text-light">|</a>
                             <a href="#" class="unit-type" id="fahrenheit">°F</a>
                             <div class="max-min-temp">
                                 <i class="fas fa-thermometer-three-quarters"></i>
-                                <span class="max" id="max-temp"></span><span>°</span>
+                                <span class="max text-light" id="max-temp"></span><span class="text-light">°</span>
                                 <i class="fas fa-thermometer-quarter"></i>
-                                <span class="min" id="min-temp"></span><span>°</span>
+                                <span class="min text-light" id="min-temp"></span><span class="text-light">°</span>
                             </div>
                         </div>
                     </div>
 
                     <ul class="text-center mb-0">
-                        <li class="text-secondary" id="wind">Wind: 10km/h</li>
-                        <li class="text-secondary" id="humidity">Humidity: 20%</li>
-                        <li class="text-secondary" id="pressure">Pressure: 10%</li>
+                        <li class="text-light" id="wind">Wind: 10km/h</li>
+                        <li class="text-light" id="humidity">Humidity: 20%</li>
+                        <li class="text-light" id="pressure">Pressure: 10%</li>
                     </ul>
                 </div>
 
@@ -74,12 +74,11 @@
                 <!--FORECAST PER HOUR-->
                 <div class="forecast d-flex justify-content-center flex-wrap" id="forecast"></div>
 
-
                 <hr />
 
                 <!-- PER DAY -->
                 <div class="d-flex justify-content-around">
-                    <div class="weekdays d-flex flex-column">
+                    <div class="weekdays d-flex flex-column text-light">
                         <p class="pt-3">Tuesday</p>
                         <p class="pt-3">Wednesday</p>
                         <p class="pt-3">Thursday</p>
@@ -104,7 +103,7 @@
                         </div>
                     </div>
 
-                    <div class="days-max-temp d-flex flex-column">
+                    <div class="days-max-temp d-flex flex-column text-light">
                         <p class="pt-3">
                             <i class="fas fa-thermometer-three-quarters"></i> -6°C
                         </p>
@@ -121,7 +120,7 @@
                             <i class="fas fa-thermometer-three-quarters"></i> -1°C
                         </p>
                     </div>
-                    <div class="days-max-temp d-flex flex-column">
+                    <div class="days-max-temp d-flex flex-column text-light">
                         <p class="pt-3"><i class="fas fa-thermometer-quarter"></i> -11°C</p>
                         <p class="pt-3"><i class="fas fa-thermometer-quarter"></i> -11°C</p>
                         <p class="pt-3"><i class="fas fa-thermometer-quarter"></i> -10°C</p>
