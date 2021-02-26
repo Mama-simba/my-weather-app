@@ -39,19 +39,18 @@ let month = months[now.getMonth()];
 
 
 
-//SHOW DEFAULT CITY
-
-function showDefaultCity(city) {
+//CITY SEARCH (default city)
+function search(city) {
   let apiKey = "10e6e87cefcedb53ba160de849dd0cf8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
 
-//SEARCH FOR A CITY
+
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("input").value;
-  showDefaultCity(city);
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
 }
 
 let form = document.querySelector("form");
@@ -111,4 +110,4 @@ function getCurrentLocation(event) {
 let currentLocButton = document.querySelector("#current-location");
 currentLocButton.addEventListener("click", getCurrentLocation);
 
-showDefaultCity("Sevilla");
+search("Sevilla");
