@@ -82,6 +82,11 @@ function displayWeather(response) {
   let maxTempElement = document.querySelector("#max-temp");         //display max temperature
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
 
+  //Display Celsius temperature per city
+
+  celsiusTemperature = response.data.main.temp;
+
+
   //Weather details
 
   let windElement = document.querySelector("#wind");
@@ -93,6 +98,9 @@ function displayWeather(response) {
   let pressureElement = document.querySelector("#pressure");
   pressureElement.innerHTML = `Pressure: ${response.data.main.pressure} hPa`;
 }
+
+
+
 
 //CURRENT GEOLOCATION
 
@@ -109,5 +117,35 @@ function getCurrentLocation(event) {
 
 let currentLocButton = document.querySelector("#current-location");
 currentLocButton.addEventListener("click", getCurrentLocation);
+
+
+
+//CELSIUS & FAHRENHEIT
+
+function convertToFahrenheit(event){
+  event.preventDefault();
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+function convertToCelsius(event){
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+}
+
+
+let celsiusTemperature = null;  // added in displayWeather function to take Celsius info from API
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+
 
 search("Sevilla");
