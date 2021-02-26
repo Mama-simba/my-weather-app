@@ -1,4 +1,4 @@
-// ADD CURRENT DATE
+// CURRENT DATE
 
 function formatDate (timestamp){  //date in milliseconds
   let now = new Date(timestamp);
@@ -39,8 +39,6 @@ let month = months[now.getMonth()];
 
 
 
-
-
 //SHOW DEFAULT CITY
 
 function showDefaultCity(city) {
@@ -62,22 +60,27 @@ form.addEventListener("submit", handleSubmit);
 //CHANGE WEATHER
 function displayWeather(response) {
 
-  let dateElement = document.querySelector("#date");
+  let dateElement = document.querySelector("#date");              //display date
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   
-  let h1 = document.querySelector("h1");
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+
+
+  let h1 = document.querySelector("h1");                          //display city
   h1.innerHTML = response.data.name;
 
-  let descElement = document.querySelector("#weather-description");
+  let descElement = document.querySelector("#weather-description"); //display weather description
   descElement.innerHTML = response.data.weather[0].main;
 
-  let tempElement = document.querySelector("#temp");
+  let tempElement = document.querySelector("#temp");               //display temperature
   tempElement.innerHTML = Math.round(response.data.main.temp);
 
-  let minTempElement = document.querySelector("#min-temp");
+  let minTempElement = document.querySelector("#min-temp");         //display min temperature
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
 
-  let maxTempElement = document.querySelector("#max-temp");
+  let maxTempElement = document.querySelector("#max-temp");         //display max temperature
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
 
   //Weather details
