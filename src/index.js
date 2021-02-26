@@ -37,13 +37,31 @@ let month = months[now.getMonth()];
   return `${weekDay}, ${dayNumber} ${month}, ${hours}:${minutes}`;
 }
 
+//FORMAT FORECAST TIME
+function formatHours (timestamp){
+  let now = new Date(timestamp);
+  let hours = now.getHours(); 
+    if (hours < 10){
+      hours = `0${hours}`;
+    }
+  let minutes = now.getMinutes();
+    if (minutes < 10){
+      minutes = `0${minutes}`;
+    }  
+
+  return `${hours}:${minutes}`;
+}
 
 
-//CITY SEARCH (default city)
+
 function search(city) {
   let apiKey = "10e6e87cefcedb53ba160de849dd0cf8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
+
+  //Hourly forecast API
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 
@@ -56,6 +74,30 @@ function handleSubmit(event) {
 let form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
 
+
+//FORECAST
+function displayForecast(response){
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  //HTML elements to be replaced by API info & format Hours
+  for (let index = 0; index < 6; index++){
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class="hour-box">
+      <h4 class="text-center">
+      ${formatHours(forecast.dt * 1000)} 
+      </h4>
+      <img class="hour-weather-icon" src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" />
+      <h4 class="text-center">
+      ${Math.round(forecast.main.temp)}°
+      </h4>
+    </div>
+    `; 
+  }
+}
+
 //CHANGE WEATHER
 function displayWeather(response) {
 
@@ -64,8 +106,6 @@ function displayWeather(response) {
   
   let iconElement = document.querySelector("#main-icon");
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-
-
 
   let h1 = document.querySelector("h1");                          //display city
   h1.innerHTML = response.data.name;
@@ -137,7 +177,6 @@ function convertToCelsius(event){
   event.preventDefault();
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-
 }
 
 

@@ -123,15 +123,17 @@ ul {
   font-size: 14px;
 }
 
-/* WEATHER PER HOUR */
+/* FORECAST PER HOUR */
 
 hr {
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
+
 .hour-box {
   padding: 5px 20px;
+
 }
 
 .hour-weather-icon {
