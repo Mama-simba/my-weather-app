@@ -132,6 +132,8 @@ hr {
   background-image: linear-gradient(to right, #ccc, white, #ccc);
 }
 
+
+
 .hour-box {
   padding: 5px 25px;
 
@@ -144,13 +146,13 @@ hr {
   padding-bottom: 5px;
 }
 
-/* WEATHER PER DAY */
+/* WEATHER PER DAY 
 
 .day-icon {
   width: 25px;
 }
 
-
+*/
 
 /*FOOTER*/
 

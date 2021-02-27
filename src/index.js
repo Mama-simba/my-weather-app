@@ -2,16 +2,6 @@
 
 function formatDate (timestamp){  //date in milliseconds
   let now = new Date(timestamp);
-  let minutes = now.getMinutes();  //shows minutes with 2 digits
-    if (minutes < 10){
-      minutes = `0${minutes}`;
-    }
-
-  let hours = now.getHours();  //shows hours with 2 digits
-    if (hours < 10){
-      hours = `0${hours}`;
-    }
-
   
   let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let weekDay = weekDays[now.getDay()];
@@ -34,13 +24,13 @@ function formatDate (timestamp){  //date in milliseconds
   ];
 let month = months[now.getMonth()];
 
-  return `${weekDay}, ${dayNumber} ${month}, ${hours}:${minutes}`;
+  return `${weekDay}, ${dayNumber} ${month}, ${formatHours(timestamp)}`;
 }
 
 //FORMAT FORECAST TIME
 function formatHours (timestamp){
   let now = new Date(timestamp);
-  let hours = now.getHours(); 
+  let hours = now.getHours();    //shows hours with 2 digits
     if (hours < 10){
       hours = `0${hours}`;
     }
@@ -126,7 +116,6 @@ function displayWeather(response) {
   //Display Celsius temperature per city
   celsiusTemperature = response.data.main.temp;
 
-
   //Weather details
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
@@ -147,6 +136,10 @@ function showLocation(position) {
   let apiKey = "10e6e87cefcedb53ba160de849dd0cf8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
+
+  //Hourly forecast API
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getCurrentLocation(event) {
@@ -185,5 +178,5 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 
-
-search("Sevilla");
+//DEFAULT CITY
+search("Sevilla"); 
